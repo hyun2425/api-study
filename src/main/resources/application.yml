@@ -14,6 +14,9 @@ spring:
         hbm2ddl:
           auto: update
     show-sql: true
+  messages:
+    basename: i18n/exception
+    encoding: UTF-8
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
