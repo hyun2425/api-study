@@ -17,6 +17,8 @@ spring:
   messages:
     basename: i18n/exception
     encoding: UTF-8
+  jwt:
+    secret: govlepel@$&
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
