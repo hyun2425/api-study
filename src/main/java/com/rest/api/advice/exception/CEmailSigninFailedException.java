@@ -1,6 +1,7 @@
 package com.rest.api.advice.exception;
 
 public class CEmailSigninFailedException extends RuntimeException {
+
     public CEmailSigninFailedException() {
         super();
     }
