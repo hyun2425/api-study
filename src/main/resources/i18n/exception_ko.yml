@@ -14,3 +14,6 @@ entryPointException:
 accessDenied:
   code: "-1003"
   msg: "보유한 권한으로 접근할수 없는 리소스 입니다."
+emailSignUpDuplicate:
+  code: "-1004"
+  msg: "중복된 이메일이 존재합니다."

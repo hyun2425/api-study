@@ -1,6 +1,7 @@
 package com.rest.api.controller.v1;
 
 import com.rest.api.advice.exception.CEmailSigninFailedException;
+import com.rest.api.advice.exception.CUserSaveDuplicateException;
 import com.rest.api.config.security.JwtTokenProvider;
 import com.rest.api.entity.User;
 import com.rest.api.model.response.CommonResult;
@@ -51,6 +52,10 @@ public class SignController {
             @ApiParam(value = "비밀번호", required = true) @RequestParam String password,
             @ApiParam(value = "이름", required = true) @RequestParam String name
     ) {
+        // 중복값 체크
+        if (userJpaRepo.findByUid(id).isPresent())
+            throw new CUserSaveDuplicateException();
+
         userJpaRepo.save(User.builder()
                 .uid(id)
                 .password(passwordEncoder.encode(password))

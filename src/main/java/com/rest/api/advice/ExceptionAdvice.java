@@ -3,6 +3,7 @@ package com.rest.api.advice;
 import com.rest.api.advice.exception.CAuthenticationEntryPointException;
 import com.rest.api.advice.exception.CEmailSigninFailedException;
 import com.rest.api.advice.exception.CUserNotFoundException;
+import com.rest.api.advice.exception.CUserSaveDuplicateException;
 import com.rest.api.model.response.CommonResult;
 import com.rest.api.service.ResponseService;
 import lombok.RequiredArgsConstructor;
@@ -42,6 +43,12 @@ public class ExceptionAdvice {
     protected CommonResult emailSigninFailedException(HttpServletRequest request, CEmailSigninFailedException e) {
         return responseService.getFailResult(Integer.parseInt(getMessage("emailSigninFailed.code")), getMessage("emailSigninFailed.msg"));
     }
+    @ExceptionHandler(CUserSaveDuplicateException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    protected CommonResult userSaveDuplicateException(HttpServletRequest request, CUserSaveDuplicateException e) {
+        return responseService.getFailResult(Integer.parseInt(getMessage("emailSignUpDuplicate.code")), getMessage("emailSignUpDuplicate.msg"));
+    }
+
 
     @ExceptionHandler(CAuthenticationEntryPointException.class)
     protected CommonResult authenticationEntryPointException(HttpServletRequest request, CAuthenticationEntryPointException e) {

@@ -30,5 +30,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	runtimeOnly 'com.h2database:h2:2.1.212'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
+	testImplementation 'org.springframework.security:spring-security-test:5.7.1'
 }
