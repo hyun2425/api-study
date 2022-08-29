@@ -2,6 +2,9 @@ server:
   port: 8080
 
 spring:
+  freemarker:
+    suffix: .ftl
+    template-loader-path: classpath:/templates
   datasource:
     url: jdbc:h2:tcp://localhost/~/test
     driver-class-name: org.h2.Driver
@@ -22,3 +25,14 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  social:
+    kakao:
+      client_id: 5fe1cc8ad939193a7939bdb94ae6dc8d # 앱생성시 받은 REST API 키
+      redirect: /social/login/kakao
+      url:
+        login: https://kauth.kakao.com/oauth/authorize
+        token: https://kauth.kakao.com/oauth/token
+        profile: https://kapi.kakao.com/v2/user/me
+  url:
+    base: http://localhost:8080
+

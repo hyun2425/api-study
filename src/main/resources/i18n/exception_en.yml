@@ -17,3 +17,9 @@ accessDenied:
 emailSignUpDuplicate:
   code: "-1004"
   msg: "duplicate emails exist."
+communicationError:
+  code: "-1005"
+  msg: "An error occurred during communication."
+existingUser:
+  code: "-1006"
+  msg: "You are an existing member."

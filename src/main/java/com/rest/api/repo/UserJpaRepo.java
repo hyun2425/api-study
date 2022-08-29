@@ -7,7 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 public interface UserJpaRepo extends JpaRepository<User, Long> {
-    Optional<User> findByUid(String email);
+    Optional<User> findByUid(String uid);
+    Optional<User> findByUidAndProvider(String uid, String provider);
 
     @Transactional
     void deleteByUid(String email);

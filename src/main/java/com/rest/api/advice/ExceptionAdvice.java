@@ -1,9 +1,6 @@
 package com.rest.api.advice;
 
-import com.rest.api.advice.exception.CAuthenticationEntryPointException;
-import com.rest.api.advice.exception.CEmailSigninFailedException;
-import com.rest.api.advice.exception.CUserNotFoundException;
-import com.rest.api.advice.exception.CUserSaveDuplicateException;
+import com.rest.api.advice.exception.*;
 import com.rest.api.model.response.CommonResult;
 import com.rest.api.service.ResponseService;
 import lombok.RequiredArgsConstructor;
@@ -58,6 +55,16 @@ public class ExceptionAdvice {
     @ExceptionHandler(AccessDeniedException.class)
     protected CommonResult accessDeniedException(HttpServletRequest request, AccessDeniedException e) {
         return responseService.getFailResult(Integer.parseInt(getMessage("accessDenied.code")), getMessage("accessDenied.msg"));
+    }
+
+    @ExceptionHandler(CCommunicationException.class)
+    protected CommonResult communicationException(HttpServletRequest request, CCommunicationException e) {
+        return responseService.getFailResult(Integer.parseInt(getMessage("communicationError.code")), getMessage("communicationError.msg"));
+    }
+
+    @ExceptionHandler(CUserExistException.class)
+    protected CommonResult userExistException(HttpServletRequest request, CUserExistException e) {
+        return responseService.getFailResult(Integer.parseInt(getMessage("existingUser.code")), getMessage("existingUser.msg"));
     }
 
     // code 정보에 해당하는 메세지를 조회한다.
